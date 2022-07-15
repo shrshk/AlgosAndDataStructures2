@@ -18,9 +18,6 @@ public class WordSearchGame {
 				gameMatrix[i][j] = line.charAt(j);
 			}
 		}
-		for (int i=0; i<gameMatrix.length; i++) {
-			System.out.println("" + new String(gameMatrix[i]));
-		}
 	}
 	
 	void buildWordList(String allWordsStr) {
@@ -28,14 +25,7 @@ public class WordSearchGame {
 	}	
 	
 	void solvePuzzle() {
-		WordSearchGameSolver solver = new WordSearchGameSolver();
-		List<String> words = solver.findWords(gameMatrix, wordList);
-		System.out.println(words);
-		System.out.println(wordList.length);
-//		System.out.println(gameMatrix[10][1]);
-//		System.out.println(gameMatrix[10][2]);
-//		System.out.println(gameMatrix[10][3]);
-//		System.out.println(gameMatrix[10][4]);
+		new WordSearchGameSolver().findWords(gameMatrix, wordList);
 	}
 	
 	

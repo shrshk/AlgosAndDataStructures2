@@ -101,11 +101,7 @@ public class WordSearchGameSolver {
         }
 
 		if (trieNode.search(tmp)) {
-			int len = tmp.length();
-			List<List<String>> allPathsForWord = finalPathMap.getOrDefault(tmp, new ArrayList<>());
-			List<String> wordPath = new ArrayList<>(currPath.subList(currPath.size()-len, currPath.size()-1));
-			allPathsForWord.add(wordPath);
-            finalPathMap.put(tmp, allPathsForWord);
+			addPathToResult(tmp, currPath);
 			set.add(tmp);
 		}
 
@@ -120,5 +116,13 @@ public class WordSearchGameSolver {
 		}
 
 		used[i][j] = false;
+	}
+	
+	private void addPathToResult(String tmp, List<String> currPath) {
+		int len = tmp.length();
+		List<List<String>> allPathsForWord = finalPathMap.getOrDefault(tmp, new ArrayList<>());
+		List<String> wordPath = new ArrayList<>(currPath.subList(currPath.size()-len, currPath.size()-1));
+		allPathsForWord.add(wordPath);
+        finalPathMap.put(tmp, allPathsForWord);
 	}
 }
